@@ -1,0 +1,39 @@
+ClusterManager:
+  private_ip: ${cluster_manager[0].private_ip}
+  instance_id: ${cluster_manager[0].instance_id}
+
+indexers:
+%{ for name, instance in indexers ~}
+  ${name}:
+    private_ip: ${instance.private_ip}
+    instance_id: ${instance.instance_id}
+%{ endfor ~}
+
+search_heads:
+%{ for name, instance in search_heads ~}
+  ${name}:
+    private_ip: ${instance.private_ip}
+    instance_id: ${instance.instance_id}
+%{ endfor ~}
+
+Deployment_Server:
+  private_ip: ${deployment_server[0].private_ip}
+  instance_id: ${deployment_server[0].instance_id}
+
+Management_server:
+  private_ip: ${Management_server[0].private_ip}
+  instance_id: ${Management_server[0].instance_id}
+
+Deployer:
+  private_ip: ${deployer[0].private_ip}
+  instance_id: ${deployer[0].instance_id}
+
+IFs:
+%{ for name, instance in ifs ~}
+  ${name}:
+    private_ip: ${instance.private_ip}
+    instance_id: ${instance.instance_id}
+%{ endfor ~}
+
+splunk_license_url: ${splunk_license_url}
+splunk_admin_password: admin123
